@@ -13,15 +13,15 @@ app.use(express.json());
 
 app.use(cors());
 
-connection();
-app.use(userRouter);
-
-app.get("/health", (req, res) => {
-    res.status(200).json({message: "API is healthy"});
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ message: "API is healthy" });
 });
 
+app.use(userRouter);
+
 app.listen(port, () => {
-    console.log(`server is listening on port ${port}`);
+  connection();
+  console.log(`server is listening on port ${port}`);
 });
 
 module.exports = app;
