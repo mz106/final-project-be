@@ -12,10 +12,10 @@ app.use(express.json());
 
 app.use(cors());
 
-app.get("/.netlify/functions/health", (req, res) => {
+app.get("/.netlify/functions/api/health", (req, res) => {
   res.status(200).json({ message: "API is healthy" });
 });
 
-app.use(userRouter);
+app.use("/.netlify/functions/api", userRouter);
 
 module.exports = app;
